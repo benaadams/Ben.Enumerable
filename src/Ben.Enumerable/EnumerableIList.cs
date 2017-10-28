@@ -61,8 +61,8 @@ namespace System.Collections.Generic
         /// <inheritdoc />
         public void RemoveAt(int index) => _list.RemoveAt(index);
 
-        IEnumerator IEnumerable.GetEnumerator() => _list.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator() => _list.GetEnumerator();
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => GetEnumerator();
     }
 }
