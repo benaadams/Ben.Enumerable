@@ -19,6 +19,13 @@ namespace System.Collections.Generic
 
         public EnumeratorIList<T> GetEnumerator() => new EnumeratorIList<T>(_list);
 
+        public static implicit operator EnumerableIList<T>(List<T> list) => new EnumerableIList<T>(list);
+
+        public static implicit operator EnumerableIList<T>(T[] array) => new EnumerableIList<T>(array);
+
+        public static EnumerableIList<T> Empty = default;
+
+
         // IList pass through
 
         /// <inheritdoc />

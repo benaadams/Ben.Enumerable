@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using Xunit;
 
 namespace Enumerable
 {
-    public class List
+    public class ImmutableArray
     {
         [Fact]
         public void EnumerationSame()
         {
             // Arrange
-            IList<int> iList = new List<int> {1, 2, 3, 4, 5, 6, 7};
+            IList<int> iList = new[] { 1, 2, 3, 4, 5, 6, 7 }.ToImmutableArray();
 
             // Act
             EnumerableIList<int> eIList = EnumerableIList.Create(iList);
@@ -31,7 +32,7 @@ namespace Enumerable
         public void Empty()
         {
             // Arrange
-            IList<int> iList = new List<int>();
+            IList<int> iList = System.Array.Empty<int>().ToImmutableArray();
 
             // Act
             EnumerableIList<int> eIList = EnumerableIList.Create(iList);
@@ -52,7 +53,7 @@ namespace Enumerable
         public void NoAllocations()
         {
             // Arrange
-            IList<int> iList = new List<int> { 1, 2, 3, 4, 5, 6, 7 };
+            IList<int> iList = new[] { 1, 2, 3, 4, 5, 6, 7 }.ToImmutableArray();
 
             // Act
             EnumerableIList<int> eIList = EnumerableIList.Create(iList);

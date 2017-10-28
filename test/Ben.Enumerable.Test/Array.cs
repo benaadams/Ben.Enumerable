@@ -10,10 +10,10 @@ namespace Enumerable
         public void EnumerationSame()
         {
             // Arrange
-            IList<int> iList = new []{1, 2, 3, 4, 5, 6, 7};
+            int[] array = new[] { 1, 2, 3, 4, 5, 6, 7 };
 
-            // Act
-            EnumerableIList<int> eIList = EnumerableIList.Create(iList);
+            IList<int> iList = array;
+            EnumerableIList<int> eIList = array;
 
             // Assert
             var i = 0;
@@ -31,10 +31,9 @@ namespace Enumerable
         public void Empty()
         {
             // Arrange
-            IList<int> iList = new int[0];
-
-            // Act
-            EnumerableIList<int> eIList = EnumerableIList.Create(iList);
+            int[] array = System.Array.Empty<int>();
+            IList<int> iList = array;
+            EnumerableIList<int> eIList = array;
 
             // Assert
             var i = 0;
@@ -52,10 +51,12 @@ namespace Enumerable
         public void NoAllocations()
         {
             // Arrange
-            IList<int> iList = new [] { 1, 2, 3, 4, 5, 6, 7 };
+            int[] array = new[] { 1, 2, 3, 4, 5, 6, 7 };
+
+            IList<int> iList = array;
+            EnumerableIList<int> eIList = array;
 
             // Act
-            EnumerableIList<int> eIList = EnumerableIList.Create(iList);
             var startAllocs = GC.GetAllocatedBytesForCurrentThread();
 
             // Assert
